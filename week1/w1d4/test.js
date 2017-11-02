@@ -1,5 +1,11 @@
-var array = [10, 2, 5, 1, 9];
-array.sort(function(a,b) {
-  return a-b
-})
-console.log(array)
+var outer = function() {
+  var x = 10;
+
+  var inner = function() {
+    console.log("The value of x is: " + x);
+  }
+  return inner;
+};
+
+var foo = outer();
+foo();

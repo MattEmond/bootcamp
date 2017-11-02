@@ -23,9 +23,9 @@ var reverse = map(words, function(word) {
 });
 
 
-console.log(length)
-console.log(upperCase)
-console.log(reverse)
+console.log(length);
+console.log(upperCase);
+console.log(reverse);
 
 
 
