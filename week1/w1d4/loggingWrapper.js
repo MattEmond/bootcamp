@@ -1,7 +1,10 @@
 var wrapLog = function (callback, name) {
   return function() {
+    // console.log(callback)
     // area.apply(null, arguments)
-    console.log(callback.apply(null, arguments))//(arguments[0],arguments[1],arguments[2]))
+    // console.log(name)
+    // console.log(arguments)
+    console.log(name, arguments, "=>", callback.apply(null, arguments))//(arguments[0],arguments[1],arguments[2]))
   };
 
 };
