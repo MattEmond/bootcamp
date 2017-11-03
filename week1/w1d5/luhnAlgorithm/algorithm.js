@@ -1,6 +1,7 @@
-var check = function(number) {
+var check = function(string) {
 
-};
+}
+
 
 
 check(7992739871)
