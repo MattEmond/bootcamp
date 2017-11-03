@@ -43,6 +43,7 @@ function calculateSalesTax(salesData, taxRates) {
     }
   }
   console.log("Total is :", total)
+  console.log("Total Taxes is :", totalTaxes)
   console.log(output);
   return output;
 
