@@ -42,6 +42,7 @@ function calculateSalesTax(salesData, taxRates) {
       "totalTaxes": (total * taxRates[company.province])};
     }
   }
+  console.log("Total is :", total)
   console.log(output);
   return output;
 
