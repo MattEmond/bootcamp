@@ -1,10 +1,10 @@
- var check = function(string) {
-
+ var check = function(number) {
+  return number * number;
  }
 
 
 module.exports = {
-  check check
+  check: check
 }
 
 
