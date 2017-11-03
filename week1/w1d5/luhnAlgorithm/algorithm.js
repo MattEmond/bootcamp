@@ -1,4 +1,4 @@
-var check = function(string) {
+var check = function(number) {
 
 }
 
