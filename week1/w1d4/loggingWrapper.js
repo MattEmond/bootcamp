@@ -1,5 +1,9 @@
 var wrapLog = function (callback, name) {
-  /* your code here */
+  return function() {
+    // area.apply(null, arguments)
+    console.log(callback.apply(null, arguments))//(arguments[0],arguments[1],arguments[2]))
+  };
+
 };
 
 var area = function (x, y) {
