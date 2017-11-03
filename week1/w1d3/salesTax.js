@@ -27,9 +27,23 @@ function calculateSalesTax(salesData, taxRates) {
   var output = {}
   // for each object (company) in the array of objects
   for (company of salesData) {
-    const total = company.sales.reduce(function(sum, value) {
+    var total = company.sales.reduce(function(sum, value) {
       return sum + value;
     }, 0);
+
+    var totalTaxes = total * taxRates[company.province];
+    if(output.hasOwnProperty(company.name)) {
+      let otherProvinceSales = output[company.name].total;
+      let otherProvinceTotalTaxes = output[company.name].totalTaxes;
+      output[company.name].total = otherProvinceSales + total;
+      output[company.name].totalTaxes = otherProvinceTotalTaxes + totalTaxes;
+    } else {
+      output[company.name] = {"total": total,
+      "totalTaxes": (total * taxRates[company.province])};
+    }
+  }
+  console.log(output);
+  return output;
 
 
     //tax stuff
@@ -44,21 +58,21 @@ function calculateSalesTax(salesData, taxRates) {
 
 
     // if output doesn't have company
-    if (output[company.name] === undefined) {
-      output[company.name] = {
-        totalSales: 0,
-        totalTaxes: 0
-      }
-    }
+  //   if (output[company.name] === undefined) {
+  //     output[company.name] = {
+  //       totalSales: 0,
+  //       totalTaxes: 0
+  //     }
+  //   }
 
-    output[company.name].totalSales += total;
-  }
-  console.log(output)
-  return output
+  //   output[company.name].totalSales += total;
+  // }
+  // console.log(output)
+  // return output
 }
 
 
-var results = calculateSalesTax(companySalesData, salesTaxRates);
+calculateSalesTax(companySalesData, salesTaxRates);
 
 /* Expected Results:
 {
