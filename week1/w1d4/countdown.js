@@ -1,4 +1,4 @@
-var countdownGenerator = function (x) {
+var countdownGenerator = function (x) { //On this line, x is referring to the number 3 in the countdown variable.
   return function() {
     if (x > 0) {
       console.log("T-minus", x + "...");
@@ -7,7 +7,7 @@ var countdownGenerator = function (x) {
     } else {
       console.log("Rockets already gone, bub!");
     }
-    x --;
+    x --; //This allows us to countdown, as every time this is invoked x (3) subtracts 1.
   };
 };
 
