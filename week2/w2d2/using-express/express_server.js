@@ -2,14 +2,28 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 8080; // default is 8080
 
-var urlDatabase = {
+app.set("view engine", "ejs")
+
+const urlDatabase = {
   "b2xVn2": "http://lighthouselabs.ca",
   "9sm5xk": "http://www.google.com"
 };
 
-app.get("/", (request, response) => {
-  response.end("Hello!");
+
+// home page
+// app.get("/", (request, response) => {
+
+// })
+
+app.get("/urls", (request, response) => {
+  let templateVars = { urls: urlDatabase};
+  response.render("urls_index", templateVars);
 });
+
+app.get("/urls/:id", (request, response) => {
+  let templateVars = {shortURL: request.params.id};
+  response.render("urls_show", templateVars)
+})
 
 app.get("/urls.json", (request, response) => {
   response.json(urlDatabase);

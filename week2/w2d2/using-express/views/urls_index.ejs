@@ -1,0 +1,41 @@
+<!-- views/urls_index.ejs -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>TinyApp</title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <style>
+    body {
+      padding-top: 20px;
+      padding-bottom: 20px
+    }
+
+    .jumbotron {
+      margin-top: 10px
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Welcome to TinyApp</h1>
+      <p>Input a URL to shorten it</p>
+    </div>
+
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="list-group">
+          <!-- loop over urls -->
+          <% for (key in urls) { %>
+            <a href="#<% key %>"
+              <!-- %= means html escaped.  Will print out in html -->
+             <p><%= key %></a> <%= urls[key] %></p>
+          <% } %>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
