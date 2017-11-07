@@ -3,8 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <header>
+    <% include partials/_header %>
+</header>
   <meta charset="utf-8">
-  <title>TinyApp</title>
+  <title>tinyApp</title>
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <style>
     body {
@@ -17,10 +20,12 @@
     }
   </style>
 </head>
+
 <body>
+
   <div class="container">
     <div class="jumbotron">
-      <h1>Welcome to TinyApp</h1>
+      <h1>Welcome to tinyApp</h1>
       <p>Input a URL to shorten it</p>
     </div>
 
@@ -31,7 +36,7 @@
             <!-- loop over urls -->
             <% for (key in urls) { %>
               <!-- %= means html escaped.  Will print out in html -->
-              <p><%= key %> <%= urls[key] %> <a href="#"> Shorten</a></p>
+              <p><%= key %> <%= urls[key].longURL %> <a href="#"> Shorten</a></p>
             <% } %>
           </div>
         </div>
