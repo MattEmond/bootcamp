@@ -13,11 +13,9 @@ const urlDatabase = {
   }
 };
 
-
-// home page
-// app.get("/", (request, response) => {
-
-// })
+function generateRandomString() {
+  return Math.random().toString(36).slice(2)
+}
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended: true}));
@@ -30,7 +28,6 @@ app.post("/urls", (request, response) => {
   console.log(request.body); // debug statement to see POST parameters
   response.send("OK"); // Respond with OK
 })
-
 
 
 app.get("/urls", (request, response) => {
@@ -57,3 +54,6 @@ app.get("/hello", (request, response) => {
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
+
+generateRandomString()
+
