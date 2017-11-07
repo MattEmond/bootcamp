@@ -19,6 +19,20 @@ const urlDatabase = {
 
 // })
 
+const bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({extended: true}));
+
+app.get("/urls/new", (request, response) => {
+  response.render("urls_new");
+});
+
+app.post("/urls", (request, response) => {
+  console.log(request.body); // debug statement to see POST parameters
+  response.send("OK"); // Respond with OK
+})
+
+
+
 app.get("/urls", (request, response) => {
   let templateVars = { urls: urlDatabase};
   response.render("urls_index", templateVars);
