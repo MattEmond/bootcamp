@@ -22,6 +22,9 @@ const urlDatabase = {
     longURL: "http://www.google.com"
   },
 };
+
+
+
 // generate random url id
 function generateRandomString() {
   return Math.random().toString(36).substr(2, 6);
@@ -35,7 +38,7 @@ app.get("/urls/new", (request, response) => {
 // take in url from the urls/new page and then generate a random ID
 app.post("/urls", (request, response) => {
   console.log(request.body); // debug statement to see POST parameters
-  var id = generateRandomString();
+  let id = generateRandomString();
   urlDatabase[id] = request.body
   // once we input the new URL, we get redirected to a new page with the info
   response.redirect("/urls/" + id);
@@ -52,13 +55,17 @@ app.get("/u/:shortURL", (request, response) => {
 // passes URL data to the template urls_index.ejs
 // done with res.render
 app.get("/urls", (request, response) => {
-  let templateVars = { urls: urlDatabase};
+  let templateVars = {
+      urls: urlDatabase,
+      username: request.cookies["userID"]
+  };
   response.render("urls_index", templateVars);
 });
 
 // passes URL data to template urls_show.
 app.get("/urls/:id", (request, response) => {
   let templateVars = {
+    username: request.cookies["userID"],
     shortURL: request.params.id,
     longURL: urlDatabase[request.params.id].longURL
   };
