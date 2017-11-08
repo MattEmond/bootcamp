@@ -9,6 +9,9 @@ const PORT = process.env.PORT || 8080; // default is 8080
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended: true}));
 
+const cookieParser = require('cookie-parser');
+app.use(cookieParser())
+
 
 // url database
 const urlDatabase = {
