@@ -37,6 +37,7 @@
             <!-- loop over urls -->
             <% for (key in urls) { %>
               <!-- %= means html escaped.  Will print out in html -->
+              <!-- below is a list of the URLs and their shortened forms -->
               <li><%= key %> <%= urls[key].longURL %> <a href="#"> Shorten</a></li>
             <% } %>
           </ul>

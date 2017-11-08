@@ -1,8 +1,13 @@
 const express = require("express");
+
 const app = express();
+app.set("view engine", "ejs");
+
 const PORT = process.env.PORT || 8080; // default is 8080
 
-app.set("view engine", "ejs")
+const bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({extended: true}));
+
 
 // url database
 const urlDatabase = {
@@ -15,13 +20,10 @@ const urlDatabase = {
 };
 // generate random url id
 function generateRandomString() {
-  return Math.random().toString(36).substr(2, 6)
+  return Math.random().toString(36).substr(2, 6);
 }
 
-const bodyParser = require("body-parser");
-app.use(bodyParser.urlencoded({extended: true}));
-
-// urls_new.ejs
+// page for input of new urls.  Passes URL data to urls_new
 app.get("/urls/new", (request, response) => {
   response.render("urls_new");
 });
@@ -30,25 +32,24 @@ app.get("/urls/new", (request, response) => {
 app.post("/urls", (request, response) => {
   console.log(request.body); // debug statement to see POST parameters
   var id = generateRandomString();
-  // result of check of if the request.body (longURL) has http://, if not, add to
-  // the beginning of reuqest.body (look up regex...regular expression)
   urlDatabase[id] = request.body
   response.redirect("/urls/" + id);
-})
+});
 
 // used to handle shortURL requests
 app.get("/u/:shortURL", (request, response) => {
-   let shortURL = request.params.shortURL
-   let longURL = urlDatabase[shortURL].longURL
-   response.redirect(longURL)
-})
+   let shortURL = request.params.shortURL;
+   let longURL = urlDatabase[shortURL].longURL;
+   response.redirect(longURL);
+});
 
-// list of all urls
+// passes URL data to the template urls_index.ejs
 app.get("/urls", (request, response) => {
   let templateVars = { urls: urlDatabase};
   response.render("urls_index", templateVars);
 });
 
+// passes URL data to template urls_show.
 app.get("/urls/:id", (request, response) => {
   let templateVars = {
     shortURL: request.params.id,
@@ -57,17 +58,19 @@ app.get("/urls/:id", (request, response) => {
   response.render("urls_show", templateVars);
 });
 
-app.get("/urls.json", (request, response) => {
-  response.json(urlDatabase);
-});
+// gives me a JSON output of my main page.
+// app.get("/urls.json", (request, response) => {
+//   response.json(urlDatabase);
+// });
 
-app.get("/hello", (request, response) => {
-  response.end("<html><body>Hello <b>World</b></body></html>\n")
-});
+// sends a Hello World message when I redirect to /hello.
+// app.get("/hello", (request, response) => {
+//   response.end("<html><body>Hello <b>World</b></body></html>\n")
+// });
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
 
-generateRandomString()
+generateRandomString();
 
