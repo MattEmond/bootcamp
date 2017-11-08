@@ -28,7 +28,7 @@ app.get("/urls/new", (request, response) => {
 
 // take in url from the new page and then generate a random ID
 app.post("/urls", (request, response) => {
-  // console.log(request.body); // debug statement to see POST parameters
+  console.log(request.body); // debug statement to see POST parameters
   var id = generateRandomString();
   // result of check of if the request.body (longURL) has http://, if not, add to
   // the beginning of reuqest.body (look up regex...regular expression)
