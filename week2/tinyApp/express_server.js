@@ -5,6 +5,7 @@ app.set("view engine", "ejs");
 
 const PORT = process.env.PORT || 8080; // default is 8080
 
+// allows us to access POST request parameters
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -28,15 +29,17 @@ app.get("/urls/new", (request, response) => {
   response.render("urls_new");
 });
 
-// take in url from the new page and then generate a random ID
+// take in url from the urls/new page and then generate a random ID
 app.post("/urls", (request, response) => {
   console.log(request.body); // debug statement to see POST parameters
   var id = generateRandomString();
   urlDatabase[id] = request.body
+  // once we input the new URL, we get redirected to a new page with the info
   response.redirect("/urls/" + id);
 });
 
 // used to handle shortURL requests
+// purpose of this is to provide a link to the long URL page
 app.get("/u/:shortURL", (request, response) => {
    let shortURL = request.params.shortURL;
    let longURL = urlDatabase[shortURL].longURL;
@@ -44,6 +47,7 @@ app.get("/u/:shortURL", (request, response) => {
 });
 
 // passes URL data to the template urls_index.ejs
+// done with res.render
 app.get("/urls", (request, response) => {
   let templateVars = { urls: urlDatabase};
   response.render("urls_index", templateVars);
