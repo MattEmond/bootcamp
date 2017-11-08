@@ -17,8 +17,11 @@
     <div class="jumbotron">
       <h2>Site Shortened!</h2>
       <!-- This is code to show the URL in its shortened form -->
-      <p class="lead">Here is your unique short code -----  <%= shortURL %> </p>
+      <p class="lead"> Here is your unique short code -----  <%= shortURL %> </p>
       <p><a href="<%=longURL%>">Click Here To Visit <%= longURL %> </a></p>
+      <!-- line 23-24 will take in an existing longURL and update it -->
+      <input id="longURL" type="text" name="longURL" value="http://" style="width: 300px">
+      <form method="POST" action="/urls/update"> <Button> UPDATE </Button> </form>
     </div>
   </div>
 </body>
