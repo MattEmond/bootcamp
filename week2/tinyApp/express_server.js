@@ -62,6 +62,12 @@ app.get("/urls/:id", (request, response) => {
   response.render("urls_show", templateVars);
 });
 
+// POST route to remove a URL resource
+app.post("urls/:id/delete"), (request, response) => {
+  delete urlDatabase[id];
+  response.render("/urls")
+};
+
 // gives me a JSON output of my main page.
 // app.get("/urls.json", (request, response) => {
 //   response.json(urlDatabase);

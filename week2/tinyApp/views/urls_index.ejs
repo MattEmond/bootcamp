@@ -35,14 +35,16 @@
       <div class="row">
         <div class="col-lg-12">
           <div class="list-group">
-            <ul>
             <!-- loop over urls -->
             <% for (key in urls) { %>
               <!-- %= means html escaped.  Will print out in html -->
               <!-- below is a list of the URLs and their shortened forms -->
-              <li><%= key %> <%= urls[key].longURL %> <a href="#"> Shorten</a></li>
+              <p>
+                <%= key %> <%= urls[key].longURL %> <a href="#"> Shorten</a>
+                <!-- Delete button -->
+                <form method="POST" action="/urls/<%= key %>/delete"> <Button> DELETE </Button> </form>
+              </p>
             <% } %>
-          </ul>
           </div>
         </div>
       </div>
