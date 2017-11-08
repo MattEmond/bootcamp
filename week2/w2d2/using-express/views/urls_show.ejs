@@ -3,17 +3,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-  <title></title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 <body>
   <header>
     <% include partials/_header %>
 </header>
 
+<div class="container">
+    <div class="jumbotron">
+     <h2>Site Shortened!</h2>
+   <p class="lead">Here is your unique short code.</p>
+   <%= shortURL %>
+ </div>
+</div>
+
 <div>
-  <p><a href="<%=longURL%>">Click Here To Visit Site </a></p>
-  <%= shortURL %>
+  <p><a href="<%=longURL%>">Click Here To Visit <%= longURL %> </a></p>
+
+  <%= homePage %>
+
   <%= longURL %>
 </div>
 
