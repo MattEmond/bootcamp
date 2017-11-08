@@ -93,8 +93,15 @@ app.post("/urls/:id", (request, response) => {
 // POST route to handle username cookies
 // request.body.username is refering to the input name in header.ejs
 app.post("/login", (request, response) => {
-  console.log(request.body)
+  console.log(request.body);
   response.cookie("userID", request.body.username);
+  response.redirect("/urls");
+});
+
+// POST route to handle username logout
+app.post("/logout", (request, response) => {
+  console.log(request.body);
+  response.clearCookie("userID", request.body.username);
   response.redirect("/urls");
 });
 

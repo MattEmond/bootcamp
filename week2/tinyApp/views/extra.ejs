@@ -1,4 +1,23 @@
- <a href="/urls/<% urls %>" class="list-group-item"
-              <h4 class="list-group-item-heading"><% urls %></h4>
-              <p class="list-group-item-text"><% urls %></p>
-            </a>
+
+<div>
+    <nav>
+      <form action="/login" method="POST" style="margin:150px">
+      <label for="username"> Enter a Username </label>
+      <input id="username" type="text" name="username" placeholder="Enter Username" style="width: 300px">
+      <input type="submit" value="LOG IN">
+      Hello <%= username %>
+    </form>
+  </nav>
+</div>
+
+
+
+
+
+
+
+
+<div>
+  <nav>
+    <form action="/logout" method="POST" style="margin:150px">
+      <input type="submit" value="LOG OUT"

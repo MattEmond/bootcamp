@@ -3,12 +3,22 @@
 <!-- header to be used on all pages -->
 
 <div>
-    <nav>
-      <form action="/login" method="POST" style="margin:150px">
-      <label for="username"> Enter a Username </label>
-      <input id="username" type="text" name="username" placeholder="Enter Username" style="width: 300px">
-      <input type="submit" value="Submit">
-      Hello <%= username %>
-    </form>
-  </nav>
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Welcome to tinyApp</h1>
+    </div>
+  <% if (!username) { %>
+    <form action="/login" method="POST" style="margin:150px">
+       Please Enter your Username
+      <input type="text" name="username">
+      <button name="button">LOG IN</button>
+    <%} else {%>
+      <form action="/logout" method="POST" style="margin:150px">
+       Hello <%= username%>
+        <button name="button">LOG OUT </button>
+    <% } %>
+  </form>
 </div>
+
+
+
