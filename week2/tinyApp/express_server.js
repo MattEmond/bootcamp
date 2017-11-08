@@ -80,10 +80,16 @@ app.post("/urls/:id", (request, response) => {
   let longURL = request.body.longURL;
   urlDatabase[request.params.id].longURL = longURL;
   console.log(longURL);
-
-
   response.redirect("/urls");
-})
+});
+
+// POST route to handle username cookies
+// request.body.username is refering to the input name in header.ejs
+app.post("/login", (request, response) => {
+  console.log(request.body)
+  response.cookie("userID", request.body.username);
+  response.redirect("/urls");
+});
 
 // gives me a JSON output of my main page.
 // app.get("/urls.json", (request, response) => {
