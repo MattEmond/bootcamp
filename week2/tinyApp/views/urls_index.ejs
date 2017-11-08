@@ -39,7 +39,7 @@
               <!-- %= means html escaped.  Will print out in html -->
               <!-- below is a list of the URLs and their shortened forms -->
               <p>
-                <%= key %> <%= urls[key].longURL %> <a href="#"> Shorten</a>
+                <%= key %> -----> <%= urls[key].longURL %>  <a href="#"> Shorten</a>
                 <!-- Delete button -->
                 <form method="POST" action="/urls/<%= key %>/delete"> <Button> DELETE </Button> </form>
               </p>
