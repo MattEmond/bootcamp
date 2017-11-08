@@ -65,10 +65,22 @@ app.get("/urls/:id", (request, response) => {
 // POST route to remove a URL resource
 // id always needs to be passed as request.params.id
 app.post("/urls/:id/delete", (request, response) => {
-  let id = request.params.id
+  let id = request.params.id;
   delete urlDatabase[id];
   response.redirect("/urls");
 });
+
+// POST route to update a URL resource
+app.post("/urls/:id", (request, response) => {
+  console.log(request.body);
+  let id = request.params.id;
+  let longURL = request.body.longURL;
+  urlDatabase[request.params.id].longURL = longURL;
+  console.log(longURL);
+
+
+  response.redirect("/urls");
+})
 
 // gives me a JSON output of my main page.
 // app.get("/urls.json", (request, response) => {
