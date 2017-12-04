@@ -43,6 +43,6 @@ def ordered_by_qualifications(candidates)
     a[:years_of_experience] <=> b[:years_of_experience]
     if a == b
       a[:github_points] <=> b[:github_points]
-    end 
+    end
   end
 end
